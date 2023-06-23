@@ -7,7 +7,7 @@ import HomePage from './pages/Homepage';
 const MainRoutes = () => {
   return (
     <Routes>
-      <Route path='/bem___' element={<HomePage/>}/>
+      <Route path='/' element={<HomePage/>}/>
     </Routes>
   );
 };
