@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/bema/static/css/main.92f0ccd2.css",
+    "main.js": "/bema/static/js/main.bb3dab5d.js",
+    "static/media/Profile.jpeg": "/bema/static/media/Profile.4bfbb6ccee46c25eb05f.jpeg",
+    "static/media/loading.gif": "/bema/static/media/loading.a1a996746e5e48352c81.gif",
+    "static/media/InstaLogo.png": "/bema/static/media/InstaLogo.7ad105deb0e77c67643f.png",
+    "static/media/FirstPage.png": "/bema/static/media/FirstPage.712855dd6c1ce0cdca5c.png",
+    "static/media/openEye.png": "/bema/static/media/openEye.5e6dd42b41ada70ad44b.png",
+    "index.html": "/bema/index.html",
+    "main.92f0ccd2.css.map": "/bema/static/css/main.92f0ccd2.css.map",
+    "main.bb3dab5d.js.map": "/bema/static/js/main.bb3dab5d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.92f0ccd2.css",
+    "static/js/main.bb3dab5d.js"
+  ]
+}
